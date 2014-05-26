@@ -3,13 +3,13 @@
 Plugin Name: WP Google Search
 Plugin URI: http://webshoplogic.com/
 Description: This plugin gives a very simple way to integrate Google Search into your WordPress site.  
-Version: 1.0.0
+Version: 1.0.1
 Author: WebshopLogic
 Author URI: http://webshoplogic.com/
 License: GPLv2 or later
 Text Domain: wgs
-Requires at least: 3.8
-Tested up to: 3.8
+Requires at least: 3.7
+Tested up to: 3.9
 */
 
 if ( ! class_exists( 'WP_Google_Search' ) ) {
@@ -31,13 +31,12 @@ class WP_Google_Search {
 		
 		$options = get_option( 'wgs_general_settings' );
 
-		if (1==$options['enable_plugin']) {
+		//if (!empty($options['google_search_engine_id'])) { //$options['enable_plugin']
 
 			include_once( 'wgs-widget.php' );
-
 			do_action( 'wgs_init' );
 
-		}
+		//}
 
 	}
 
@@ -51,7 +50,7 @@ class WP_Google_Search {
 
 		$options = get_option('wgs_general_settings');
 
-		if ( 1 == $options['enable_plugin'] ) {
+		//if ( !empty($options['google_search_engine_id']) ) { //$options['enable_plugin']
 			
 			wp_register_script(
 				'google_cse_v2',
@@ -64,6 +63,9 @@ class WP_Google_Search {
 
 			wp_enqueue_script( 'google_cse_v2' );
 			
+			if ($options['use_default_correction_css'] == 1)
+				wp_enqueue_style( 'wgs', plugins_url('wgs.css', __FILE__) );
+			
 			$script_params = array(
 				'google_search_engine_id' => $options['google_search_engine_id']
 				);
@@ -75,7 +77,7 @@ class WP_Google_Search {
 
 			do_action( 'wgs_init', $this );
 
-		}
+		//}
 
 	}
 	
@@ -137,8 +139,8 @@ class WP_Google_Search {
 		
 		$options = get_option( 'wgs_general_settings' );
 
-		if ($options['use_default_correction_css'] == 1)
-			wp_enqueue_style( 'wgs', plugins_url('wgs.css', __FILE__) );
+		//if ($options['use_default_correction_css'] == 1)
+		//	wp_enqueue_style( 'wgs', plugins_url('wgs.css', __FILE__) );
 		
 		if ($options['searchbox_before_results'] == 1)
 			$gcse_code = 'search';
@@ -147,7 +149,13 @@ class WP_Google_Search {
 
 		$content  = '<div class="wgs_wrapper" id="wgs_wrapper_id">';
 		//$content .= '<gcse:searchresults-only linktarget="_self"></gcse:searchresults-only>';
-		$content .= '<gcse:' . $gcse_code . ' linktarget="_self"></gcse:' . $gcse_code . '>';
+		
+		//You can use HTML5-valid div tags as long as you observe these guidelines: //20140423
+		//The class attribute must be set to gcse-XXX
+		//Any attributes must be prefixed with data-.
+		//$content .= '<gcse:' . $gcse_code . ' linktarget="_self"></gcse:' . $gcse_code . '>';
+		$content .= '<div class="gcse-' . $gcse_code . '" data-linktarget="_self"></div>';
+		
 		$content .= '</div>';
 
 		$content = apply_filters('wgs_shortcode_content', $content);
@@ -160,13 +168,18 @@ class WP_Google_Search {
 		
 		$options = get_option( 'wgs_general_settings' );
 
-		if ($options['use_default_correction_css'] == 1)
-			wp_enqueue_style( 'wgs', plugins_url('wgs.css', __FILE__) );
+		//if ($options['use_default_correction_css'] == 1)
+		//	wp_enqueue_style( 'wgs', plugins_url('wgs.css', __FILE__) );
 
 		$search_gcse_page_url = get_page_link( $options['search_gcse_page_id'] );
 				
 		$content  = '<div class="wgs_wrapper" id="wgs_widget_wrapper_id">';
-		$content .= '<gcse:searchbox-only resultsUrl="' . $search_gcse_page_url . '"></gcse:searchbox-only>';
+		//You can use HTML5-valid div tags as long as you observe these guidelines: //20140423
+		//The class attribute must be set to gcse-XXX
+		//Any attributes must be prefixed with data-.
+		//$content .= '<gcse:searchbox-only resultsUrl="' . $search_gcse_page_url . '"></gcse:searchbox-only>';
+		$content .= '<div class="gcse-searchbox-only" data-resultsUrl="' . $search_gcse_page_url . '"></div>';
+		
 		$content .= '</div>';
 
 		$content = apply_filters('wgs_searchbox_shortcode_content', $content);

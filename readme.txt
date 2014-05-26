@@ -3,8 +3,8 @@ Contributors: WebshopLogic
 Donate link: http://webshoplogic.com/donation-wp-google-search/
 Tags: WP Google Search, Google Search, Google Custom Search, Google, SCE, GCSE, Wordpress Google Search
 Requires at least: 3.7
-Tested up to: 3.8
-Stable tag: 1.0.0
+Tested up to: 3.9
+Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -28,12 +28,18 @@ Search results can be displayed on a normal page or in a popup window. Use Full 
 
 It does not require any coding, or other complicated operation.
 
+= Available languages =
+* English
+* Spanish - translated by Ogi Djuraskovic - http://firstsiteguide.com
+* Serbian - translated by Ogi Djuraskovic - http://firstsiteguide.com
+
+
 == Installation ==
 
 1. Upload the plugin to the '/wp-content/plugins/' directory.
 2. Activate it through the 'Plugins' menu in WordPress.
 3. Register to Google Custom Search Engine and get your Google Search Engine ID here: https://www.google.com/cse/
-4. Enable the plugin and enter Google Search Engine ID: Settings -> WP Google Search
+4. Enable the plugin and enter Google Search Engine ID: Settings -> WP Google Search (See screenshots for more information.)
 
 == Screenshots ==
 
@@ -52,6 +58,12 @@ It does not require any coding, or other complicated operation.
 
 == Changelog ==
 
+= 1.0.1 =
+* Use new HTML5-valid div tags according to Google documentation: You can use HTML5-valid div tags as long as you observe these guidelines: The class attribute must be set to gcse-XXX, Any attributes must be prefixed with data-.
+* Eliminate Enable plugin checkbox in settings page
+* Eliminate donation button inside settings page
+* Descriptions are added to settings page
+* Spanis and Serbian translations
 
 = 1.0.0 =
 * First version

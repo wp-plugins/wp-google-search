@@ -17,8 +17,8 @@ class WGS_Widget extends WP_Widget {
 
 		$options = get_option( 'wgs_general_settings' );
 
-		if ($options['use_default_correction_css'] == 1)
-			wp_enqueue_style( 'wgs', plugins_url('wgs.css', __FILE__) );
+		//if ($options['use_default_correction_css'] == 1)
+		//	wp_enqueue_style( 'wgs', plugins_url('wgs.css', __FILE__) );
 
 		
 		$search_gcse_page_url = get_page_link( $options['search_gcse_page_id'] );
@@ -31,7 +31,14 @@ class WGS_Widget extends WP_Widget {
 		}					
 
 		$content  = '<div class="wgs_wrapper">';
-		$content .= '<gcse:searchbox-only resultsUrl="' . $search_gcse_page_url . '"></gcse:searchbox-only>';
+		
+		//You can use HTML5-valid div tags as long as you observe these guidelines: //20140423
+		//The class attribute must be set to gcse-XXX
+		//Any attributes must be prefixed with data-.
+		//$content .= '<gcse:searchbox-only resultsUrl="' . $search_gcse_page_url . '"></gcse:searchbox-only>';
+		//<div class="gcse-search">
+		$content .= '<div class="gcse-searchbox-only" data-resultsUrl="' . $search_gcse_page_url . '"></div>';
+
 		$content .= '</div>';
 
 		echo apply_filters('wgs_widget_content', $content);

@@ -35,13 +35,6 @@ class WGS_Admin_Page {
 		);
 		
 		//add_settings_field( $id, $title, $callback, $page, $section, $args );
-		add_settings_field(
-			'enable_plugin', // ID
-			__('Enable WP Google Search Plugin','wgs'), // Title 
-			array($this, 'posttype_callback'), // Callback
-			'wgs_general_settings', // Page / tab page
-			'wgs_general_section' // Section           
-		);
 
 		add_settings_field(
 			'google_search_engine_id', // ID
@@ -90,7 +83,6 @@ class WGS_Admin_Page {
 		$options = get_option( 'wgs_general_settings' ); 
 					
 		$options = wp_parse_args( $options, array(
-			'enable_plugin' => '0',
 			'google_search_engine_id' => '', 
 			'searchbox_before_results' => '0',
 			'use_default_correction_css' => '1',
@@ -128,21 +120,6 @@ class WGS_Admin_Page {
 					<table class="form-table">
 		
 						<tr valign="top">
-							<th scope="row"><?php echo __('Enable WP Google Search Plugin','wgs') . ':' ?></th>
-							<td>
-								<?php
-								printf(
-									'<input type="hidden" name="wgs_general_settings[enable_plugin]" value="0"/>
-									<input type="checkbox" id="enable_plugin" name="wgs_general_settings[enable_plugin]"
-									value="1"' . checked( 1, esc_attr( $options['enable_plugin']), false ) . ' />'
-								);
-	
-								?>    
-							</td>
-						</tr>							
-
-			
-						<tr valign="top">
 							<th scope="row"><?php echo __('Google Search Engine ID','wgs') . ':' ?></th>
 							<td>
 								<?php
@@ -150,6 +127,10 @@ class WGS_Admin_Page {
 						            '<input type="text" id="google_search_engine_id" name="wgs_general_settings[google_search_engine_id]" value="%s" size="50" />',
 						            esc_attr( $options['google_search_engine_id'])
 						        );
+								echo '<br /><span class="description">' . __('Register to Google Custom Search Engine and get your Google Search Engine ID here: ','wgs') . '<a href="https://www.google.com/cse/" target="_blank">https://www.google.com/cse/</a>' . '</span>';
+								echo '<br /><span class="description">' . __('You will get a Google Search Engine ID like this: 012345678901234567890:0ijk_a1bcde','wgs') . '</span>';
+								echo '<br /><span class="description">' . __('Enter this Google Search Engine ID here.','wgs') . '</span>';
+						        						        
 							    ?>
 							</td>
 						</tr>
@@ -163,6 +144,7 @@ class WGS_Admin_Page {
 									<input type="checkbox" id="searchbox_before_results" name="wgs_general_settings[searchbox_before_results]"
 									value="1"' . checked( 1, esc_attr( $options['searchbox_before_results']), false ) . ' />'
 								);
+								echo '<br /><span class="description">' . __('If this option is turned on, the search field will appear above the search results.','wgs') . '</span>';
 	
 								?>    
 							</td>
@@ -177,7 +159,8 @@ class WGS_Admin_Page {
 									<input type="checkbox" id="use_default_correction_css" name="wgs_general_settings[use_default_correction_css]"
 									value="1"' . checked( 1, esc_attr( $options['use_default_correction_css']), false ) . ' />'
 								);
-	
+								echo '<br /><span class="description">' . __('If this option is turned on, some css will be applied to improve the appearance of search elements in case of most WordPress themes.','wgs') . '</span>';
+									
 								?>    
 							</td>
 						</tr>							
@@ -199,7 +182,7 @@ class WGS_Admin_Page {
 						            esc_attr( get_page_link( $options['search_gcse_page_id'] ))
 								);
 			
-								
+								echo '<br /><span class="description">' . __('The plugin automatically generated a page for displaying search results. You can see here the URL of this page. Please do not delete this page and do not change the permalink of it!','wgs') . '</span>';								
 								?>
 							</td>
 						</tr>
@@ -225,15 +208,7 @@ class WGS_Admin_Page {
 					a.wli_pro:active {color: black; text-decoration:none;}
 				</style>
 	
-				<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-				<input type="hidden" name="cmd" value="_s-xclick">
-				<input type="hidden" name="hosted_button_id" value="RQVXD24KQ9ZNQ">
-				<input type="image" src="https://www.paypalobjects.com/en_GB/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal – The safer, easier way to pay online.">
-				<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-				</form>
-				
-				<hr>
-				
+			
 				<a href="http://webshoplogic.com/products/" class="wli_pro" target="_blank">
 					<h2><?php _e('Try out WP Related Items plugin', 'wgs'); ?></h2>
 				</a>							

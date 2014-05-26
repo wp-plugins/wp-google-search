@@ -63,7 +63,7 @@ It does not require any coding, or other complicated operation.
 * Eliminate Enable plugin checkbox in settings page
 * Eliminate donation button inside settings page
 * Descriptions are added to settings page
-* Spanis and Serbian translations
+* Spanish and Serbian translations
 
 = 1.0.0 =
 * First version

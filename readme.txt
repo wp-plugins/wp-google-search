@@ -4,7 +4,7 @@ Donate link: http://webshoplogic.com/donation-wp-google-search/
 Tags: WP Google Search, Google Search, Google Custom Search, Google, SCE, GCSE, Wordpress Google Search
 Requires at least: 3.7
 Tested up to: 3.9
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -32,6 +32,7 @@ It does not require any coding, or other complicated operation.
 * English
 * Spanish - translated by Ogi Djuraskovic - http://firstsiteguide.com
 * Serbian - translated by Ogi Djuraskovic - http://firstsiteguide.com
+* Portuguese (BR) - translated by Gabriel Fróes
 
 
 == Installation ==
@@ -57,6 +58,10 @@ It does not require any coding, or other complicated operation.
 
 
 == Changelog ==
+
+= 1.0.2 =
+* Portuguese (BR) translation
+* Re-create search page during re-activation if it does not exist
 
 = 1.0.1 =
 * Use new HTML5-valid div tags according to Google documentation: You can use HTML5-valid div tags as long as you observe these guidelines: The class attribute must be set to gcse-XXX, Any attributes must be prefixed with data-.

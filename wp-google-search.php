@@ -3,7 +3,7 @@
 Plugin Name: WP Google Search
 Plugin URI: http://webshoplogic.com/
 Description: This plugin gives a very simple way to integrate Google Search into your WordPress site.  
-Version: 1.0.1
+Version: 1.0.2
 Author: WebshopLogic
 Author URI: http://webshoplogic.com/
 License: GPLv2 or later
@@ -89,7 +89,7 @@ class WP_Google_Search {
 		
 		$search_gcse_page_id = $options['search_gcse_page_id'];
 
-		if ($options['search_gcse_page_id'] == null) {
+		if ($options['search_gcse_page_id'] == null or get_post($options['search_gcse_page_id']) == null) {
 
 			$search_gcse_page = array(
 			  //'ID'             => [ <post id> ] // Are you updating an existing post?

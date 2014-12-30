@@ -3,13 +3,13 @@
 Plugin Name: WP Google Search
 Plugin URI: http://webshoplogic.com/
 Description: This plugin gives a very simple way to integrate Google Search into your WordPress site.  
-Version: 1.0.2
+Version: 1.0.3
 Author: WebshopLogic
 Author URI: http://webshoplogic.com/
 License: GPLv2 or later
 Text Domain: wgs
 Requires at least: 3.7
-Tested up to: 3.9
+Tested up to: 4.0.1
 */
 
 if ( ! class_exists( 'WP_Google_Search' ) ) {
@@ -142,7 +142,7 @@ class WP_Google_Search {
 		//if ($options['use_default_correction_css'] == 1)
 		//	wp_enqueue_style( 'wgs', plugins_url('wgs.css', __FILE__) );
 		
-		if ($options['searchbox_before_results'] == 1)
+		if ($options['searchbox_before_results'] == 1 or $options['support_overlay_display'] == 1)
 			$gcse_code = 'search';
 		else
 			$gcse_code = 'searchresults-only';
@@ -172,14 +172,19 @@ class WP_Google_Search {
 		//	wp_enqueue_style( 'wgs', plugins_url('wgs.css', __FILE__) );
 
 		$search_gcse_page_url = get_page_link( $options['search_gcse_page_id'] );
+
+		if ( $options['support_overlay_display'] == 1 )
+			$gcse_code = 'search';
+		else
+			$gcse_code = 'searchbox-only';
 				
 		$content  = '<div class="wgs_wrapper" id="wgs_widget_wrapper_id">';
 		//You can use HTML5-valid div tags as long as you observe these guidelines: //20140423
 		//The class attribute must be set to gcse-XXX
 		//Any attributes must be prefixed with data-.
 		//$content .= '<gcse:searchbox-only resultsUrl="' . $search_gcse_page_url . '"></gcse:searchbox-only>';
-		$content .= '<div class="gcse-searchbox-only" data-resultsUrl="' . $search_gcse_page_url . '"></div>';
-		
+		$content .= '<div class="gcse-' . $gcse_code . '" data-resultsUrl="' . $search_gcse_page_url . '"></div>';
+				
 		$content .= '</div>';
 
 		$content = apply_filters('wgs_searchbox_shortcode_content', $content);

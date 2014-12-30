@@ -3,8 +3,8 @@ Contributors: WebshopLogic
 Donate link: http://webshoplogic.com/donation-wp-google-search/
 Tags: WP Google Search, Google Search, Google Custom Search, Google, SCE, GCSE, Wordpress Google Search
 Requires at least: 3.7
-Tested up to: 3.9
-Stable tag: 1.0.2
+Tested up to: 4.0.1
+Stable tag: 1.0.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -32,7 +32,7 @@ It does not require any coding, or other complicated operation.
 * English
 * Spanish - translated by Ogi Djuraskovic - http://firstsiteguide.com
 * Serbian - translated by Ogi Djuraskovic - http://firstsiteguide.com
-* Portuguese (BR) - translated by Gabriel Fróes
+* Portuguese (BR) - translated by Gabriel Frï¿½es
 
 
 == Installation ==
@@ -58,6 +58,9 @@ It does not require any coding, or other complicated operation.
 
 
 == Changelog ==
+
+= 1.0.3 =
+* Add "Support Overlay Display" option, for display search results in overlay window, without loading another page. 
 
 = 1.0.2 =
 * Portuguese (BR) translation

@@ -51,6 +51,14 @@ class WGS_Admin_Page {
 			'wgs_general_settings', // Page / tab page
 			'wgs_general_section' // Section           
 		);
+
+		add_settings_field(
+			'support_overlay_display', // ID
+			__('Support Overlay Display','wgs'), // Title 
+			array($this, 'posttype_callback'), // Callback
+			'wgs_general_settings', // Page / tab page
+			'wgs_general_section' // Section           
+		);
 		
 		add_settings_field(
 			'use_default_correction_css', // ID
@@ -85,6 +93,7 @@ class WGS_Admin_Page {
 		$options = wp_parse_args( $options, array(
 			'google_search_engine_id' => '', 
 			'searchbox_before_results' => '0',
+			'support_overlay_display' => '0',
 			'use_default_correction_css' => '1',
 		) );
 		
@@ -149,6 +158,23 @@ class WGS_Admin_Page {
 								?>    
 							</td>
 						</tr>							
+			 
+
+						<tr valign="top">
+							<th scope="row"><?php echo __('Support Overlay Display','wgs') . ':' ?></th>
+							<td>
+								<?php
+								printf(
+									'<input type="hidden" name="wgs_general_settings[support_overlay_display]" value="0"/>
+									<input type="checkbox" id="support_overlay_display" name="wgs_general_settings[support_overlay_display]"
+									value="1"' . checked( 1, esc_attr( $options['support_overlay_display']), false ) . ' />'
+								);
+								echo '<br /><span class="description">' . __('If you set on Google CSE admin page that result set is displayed in Overlay mode, then also set this checkbox. </br>In this case search results will be displayed without loading a new search result page. </br>If you do not use overlay display mode in GCSE, then clear this checkbox, because result set can not be displayed correctly.','wgs') . '</span>';
+									
+								?>    
+							</td>
+						</tr>							
+			 
 			 
 						<tr valign="top">
 							<th scope="row"><?php echo __('Use default corrections CSS','wgs') . ':' ?></th>

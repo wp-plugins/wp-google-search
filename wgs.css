@@ -40,3 +40,10 @@ padding-right: 0;
 .gsc-search-button input.gsc-search-button-v2, input.gsc-search-button-v2 {
 padding: 6px 10px;
 }
+
+/*switch off background and border of search box in support overlay mode*/
+.gsc-control-cse { 
+	background-color: transparent !important;
+	border: none !important;
+	padding: 0px !important;
+}

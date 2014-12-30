@@ -30,6 +30,11 @@ class WGS_Widget extends WP_Widget {
 			
 		}					
 
+		if ( $options['support_overlay_display'] == 1 )
+			$gcse_code = 'search';
+		else
+			$gcse_code = 'searchbox-only';
+
 		$content  = '<div class="wgs_wrapper">';
 		
 		//You can use HTML5-valid div tags as long as you observe these guidelines: //20140423
@@ -37,7 +42,7 @@ class WGS_Widget extends WP_Widget {
 		//Any attributes must be prefixed with data-.
 		//$content .= '<gcse:searchbox-only resultsUrl="' . $search_gcse_page_url . '"></gcse:searchbox-only>';
 		//<div class="gcse-search">
-		$content .= '<div class="gcse-searchbox-only" data-resultsUrl="' . $search_gcse_page_url . '"></div>';
+		$content .= '<div class="gcse-' . $gcse_code . '" data-resultsUrl="' . $search_gcse_page_url . '"></div>';
 
 		$content .= '</div>';
 

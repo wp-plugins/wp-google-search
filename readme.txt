@@ -32,7 +32,7 @@ It does not require any coding, or other complicated operation.
 * English
 * Spanish - translated by Ogi Djuraskovic - http://firstsiteguide.com
 * Serbian - translated by Ogi Djuraskovic - http://firstsiteguide.com
-* Portuguese (BR) - translated by Gabriel Fr�es
+* Portuguese (BR) - translated by Gabriel Froes
 
 
 == Installation ==

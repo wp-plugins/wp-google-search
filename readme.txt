@@ -34,7 +34,7 @@ It does not require any coding, or other complicated operation.
 * Serbian - translated by Ogi Djuraskovic - http://firstsiteguide.com
 * Portuguese (BR) - translated by Gabriel Fr�es
 * Swedish - translated by Tobias - http://ComClick.se
-* Danish - translated by Tobias - http://alexanderleohansen.dk
+* Danish - translated by Alexanderleo - http://alexanderleohansen.dk
 
 
 == Installation ==
